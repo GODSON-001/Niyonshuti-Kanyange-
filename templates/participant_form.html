@@ -1,0 +1,106 @@
+<!-- participant_form.html -->
+{% extends 'base.html' %}
+
+{% block title %}Participant Form - Validationapp{% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('/media/oldchurch.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 80px 40px 40px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto; /* Center the container horizontally */
+            overflow: hidden; /* Hide any content that exceeds the container */
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+            color: #495057;
+            display: block;
+        }
+
+        .btn-primary {
+            width: calc(100% - 24px);
+            padding: 12px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: 1px solid #ff6b6b;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .btn-primary:hover {
+            background-color: #ff4f4f;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <!-- Your navbar content goes here -->
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="form-title">Fill in the required field</h2>
+                <form method="post" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+{% endblock %}
